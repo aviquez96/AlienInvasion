@@ -1,13 +1,17 @@
 import sys
 
 import pygame
+from settings import Settings
+from ship import Ship
 
 def run_game():
     #Initialize game and create screen object
     pygame.init()
-    screen = pygame.display.set_mode((1200, 800))
+    ai_settings = Settings();
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
-    background_color = (230,230,230)
+
+    ship = Ship(screen);
 
     while True:
         #Keyboard event handler
@@ -15,7 +19,9 @@ def run_game():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        screen.fill(background_color)
+        screen.fill(ai_settings.background_color)
+        ship.blitme()
+
         #Refresh the most recently drawn screen
         pygame.display.flip()
 

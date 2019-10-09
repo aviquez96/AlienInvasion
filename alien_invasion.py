@@ -3,6 +3,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from game_functions import check_events
 
 def run_game():
     #Initialize game and create screen object
@@ -15,9 +16,7 @@ def run_game():
 
     while True:
         #Keyboard event handler
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        check_events()
 
         screen.fill(ai_settings.background_color)
         ship.blitme()

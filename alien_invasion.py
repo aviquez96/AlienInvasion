@@ -3,7 +3,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
-from game_functions import check_events
+import game_functions as gf
 
 def run_game():
     #Initialize game and create screen object
@@ -16,12 +16,8 @@ def run_game():
 
     while True:
         #Keyboard event handler
-        check_events()
+        gf.check_events()
 
-        screen.fill(ai_settings.background_color)
-        ship.blitme()
-
-        #Refresh the most recently drawn screen
-        pygame.display.flip()
+        gf.update_screen(ai_settings, screen, ship)
 
 run_game()

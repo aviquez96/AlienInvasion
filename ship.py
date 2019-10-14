@@ -10,6 +10,7 @@ class Ship():
         self.screen_rectangle = screen.get_rect()
 
         self.moving_right = False
+        self.moving_left = False
 
         self.rectangle.centerx = self.screen_rectangle.centerx
         self.rectangle.bottom = self.screen_rectangle.bottom
@@ -21,3 +22,5 @@ class Ship():
     def update(self):
         if self.moving_right:
             self.rectangle.centerx += 1
+        elif self.moving_left:
+            self.rectangle.centerx -= 1

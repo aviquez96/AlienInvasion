@@ -39,3 +39,10 @@ def update_screen(ai_settings, screen, ship, bullets):
 
     #Refresh the most recently drawn screen
     pygame.display.flip()
+
+def update_bullets(bullets):
+    bullets.update()
+    #get rid of bullets that dissapeared
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)

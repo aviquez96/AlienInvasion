@@ -9,8 +9,8 @@ class Bullet(Sprite):
         self.screen = screen
 
         self.rect = pygame.Rect(0, 0, ai_settings.bullet_width, ai_settings.bullet_height)
-        self.rect.centerx = ship.rect.centerx
-        self.rect.top = ship.rect.top
+        self.rect.centerx = ship.rectangle.centerx
+        self.rect.top = ship.rectangle.top
 
         #store the ship's position as a decimal value
         self.y = float(self.rect.y)

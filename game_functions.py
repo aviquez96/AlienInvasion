@@ -7,15 +7,18 @@ from time import sleep
 
 def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
     #Respond to ship being hit by alien
-    stats.ships_left -= 1
+    if (stats.ships_left > 0):
+        stats.ships_left -= 1
 
-    aliens.empty()
-    bullets.empty()
+        aliens.empty()
+        bullets.empty()
 
-    create_fleet(ai_settings, screen, ship, aliens)
-    ship.center_ship()
+        create_fleet(ai_settings, screen, ship, aliens)
+        ship.center_ship()
 
-    sleep(0.5)
+        sleep(0.5)
+    else
+        stats.game_active = False
 
 def check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets):
     #Check if any alines have reached the bottom of the screen

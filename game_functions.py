@@ -17,8 +17,10 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
         ship.center_ship()
 
         sleep(0.5)
-    else
+    else:
         stats.game_active = False
+        sleep(1.5)
+        sys.exit()
 
 def check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets):
     #Check if any alines have reached the bottom of the screen
@@ -87,13 +89,17 @@ def create_alien(ai_settings, screen, aliens, alien_number, row_number):
     alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
     aliens.add(alien)
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     screen.fill(ai_settings.background_color)
     #redraw all bullets behind ship an aliens
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
+
+    #Draw the play button if the games is inactive
+    if not stats.game_active:
+        play_button.draw_button()
 
     #Refresh the most recently drawn screen
     pygame.display.flip()
